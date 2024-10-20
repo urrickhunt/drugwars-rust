@@ -1,4 +1,4 @@
-# 40th Anniversary Drugwars in Rust 🦀
+### 40th Anniversary Drugwars in Rust 🦀
 ![drugwars](https://github.com/user-attachments/assets/6dc79d22-818e-4de9-84a2-5e447b29a008)
 
 Drugwars, the classic text-based game, is back and rewritten in Rust for its 40th anniversary. 
@@ -9,13 +9,13 @@ Single Key Commands like the original insure smooth gameplay with quick input ha
 
 ## Installation
 
-Clone Repo 'git clone https://github.com/urrickhunt/drugwars-rust'
+`git clone https://github.com/urrickhunt/drugwars-rust`
 
-Cargo build --release
+`cargo build --release`
 
-drugwars-rust
+`drugwars-rust`
 
-To play in Git Bash mintty 'winpty drugwars-rust'
+Git Bash mintty `winpty drugwars-rust`
 
 ## Controls
 
