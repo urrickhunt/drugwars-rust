@@ -7,7 +7,7 @@ This cross-platform version stays true to the original experience, featuring fam
 
 Single Key Commands like the original insure smooth gameplay with quick input handling.
 
-## Installation
+#### Installation
 
 `git clone https://github.com/urrickhunt/drugwars-rust`
 
@@ -17,7 +17,7 @@ Single Key Commands like the original insure smooth gameplay with quick input ha
 
 Git Bash mintty `winpty drugwars-rust`
 
-## Controls
+#### Controls
 
 b/B: Buy items
 
