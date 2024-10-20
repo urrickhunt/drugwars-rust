@@ -1,0 +1,26 @@
+[package]
+name = "drugwars-rust"
+version = "0.6.9"
+edition = "2021"
+authors = ["urrick hunt"]
+description = "drugwars in rust 🦀"
+license = "MIT"
+
+[[bin]]
+name = "drugwars-rust"
+path = "src/drugwars.rs"
+
+[dependencies]
+rand = "0.8.*"
+chrono = "0.4.*"
+terminal_size = "0.1.*"
+
+[target.'cfg(windows)'.dependencies]
+winapi = { version = "0.3.*", features = ["consoleapi", "wincon", "winbase", "processenv", "fileapi", "handleapi"] }
+
+[target.'cfg(unix)'.dependencies]
+nix = "0.25.*"
+
+[profile.release]
+opt-level = 2
+
