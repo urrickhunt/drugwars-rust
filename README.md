@@ -6,7 +6,9 @@ This cross-platform version stays true to the original experience, featuring fam
 ## Features
 
 Cross-Platform: Works on Windows, macOS, and Linux terminals.
+
 Written in Rust: Fast, safe, and reliable.
+
 Single Key Commands: Smooth gameplay with quick input handling.
 
 ## Installation
