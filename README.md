@@ -1,5 +1,5 @@
 # 40th Anniversary Drugwars in Rust 🦀
-![Screenshot 2024-10-20 172300](https://github.com/user-attachments/assets/08ad2639-75c7-4c0f-81b1-db38cd837e2c)
+![Screenshot 2024-10-20 172732](https://github.com/user-attachments/assets/1aefe873-c642-477b-b55e-976da80da166)
 
 Drugwars, the classic text-based game, is back and rewritten in Rust for its 40th anniversary. 
 
