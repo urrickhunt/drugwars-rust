@@ -28,6 +28,6 @@ b/B: Buy items
 
 s/S: Sell items
 
-j/J: Take a jet to another location
+j/J: Jet to another location
 
 y/n: Answer prompts (Yes/No)
