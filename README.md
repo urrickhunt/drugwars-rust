@@ -17,25 +17,3 @@ Single Key Commands like the original insure smooth gameplay with quick input ha
 
 Git Bash mintty `winpty drugwars-rust`
 
-### Controls
-
-b/B: Buy items
-
-s/S: Sell items
-
-j/J: Jet to another location
-
-y/n: Answer prompts (Yes/No)
-
-c/C: Cocaine
-
-h/H: Heroin
-
-a/A: Acid
-
-w/W: Weed
-
-s/S: Speed
-
-l/L: Ludes
-
