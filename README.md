@@ -1,6 +1,7 @@
 # 40th Anniversary Drugwars in Rust 🦀
 
 Drugwars, the classic text-based game, is back and rewritten in Rust for its 40th anniversary. 
+
 This cross-platform version stays true to the original experience, featuring familiar gameplay and updated terminal compatibility.
 
 ## Features
