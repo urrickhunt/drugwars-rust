@@ -16,12 +16,18 @@ Single Key Commands: Smooth gameplay with quick input handling.
 
 Clone Repo 'git clone https://github.com/urrickhunt/drugwars-rust'
 
+Cargo build --release
+
+drugwars-rust
 
 To play in Git Bash mintty 'winpty drugwars-rust'
 
 ## Controls
 
-b/B: Buy items.
-s/S: Sell items.
-j/J: Take a jet to another location.
-y/n: Answer prompts (Yes/No).
+b/B: Buy items
+
+s/S: Sell items
+
+j/J: Take a jet to another location
+
+y/n: Answer prompts (Yes/No)
