@@ -26,3 +26,16 @@ s/S: Sell items
 j/J: Jet to another location
 
 y/n: Answer prompts (Yes/No)
+
+c/C: Cocaine
+
+h/H: Heroin
+
+a/A: Acid
+
+w/W: Weed
+
+s/S: Speed
+
+l/L: Ludes
+
