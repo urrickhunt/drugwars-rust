@@ -3,8 +3,10 @@ name = "drugwars-rust"
 version = "0.6.9"
 edition = "2021"
 authors = ["urrick hunt"]
-description = "drugwars in rust 🦀"
+description = "Classic Drugwars game in Rust 🦀"
 license = "MIT"
+repository = "https://github.com/urrickhunt/drugwars-rust"
+keywords = ["game", "drugwars", "terminal"]
 
 [[bin]]
 name = "drugwars-rust"
