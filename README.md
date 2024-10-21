@@ -9,6 +9,10 @@ Single Key Commands like the original insure smooth gameplay with quick input ha
 
 ### Installation
 
+`cargo install drugwars-rust`
+
+### Building
+
 `git clone https://github.com/urrickhunt/drugwars-rust`
 
 `cargo build --release`
