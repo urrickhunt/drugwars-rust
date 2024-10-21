@@ -17,4 +17,4 @@ Single Key Commands like the original insure smooth gameplay with quick input ha
 
 Git Bash mintty `winpty drugwars-rust`
 
-![IMG_5980](https://github.com/user-attachments/assets/cc6369aa-614f-4e01-978e-9e44ed946e4d)
+![GM](https://github.com/user-attachments/assets/4ce085c0-e439-487a-a282-4540521f4503)
