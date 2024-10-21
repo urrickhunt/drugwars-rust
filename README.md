@@ -5,7 +5,7 @@ Drugwars, the classic text-based game, is back and rewritten in Rust for its 40t
 
 This cross-platform version stays true to the original experience, featuring familiar gameplay and updated terminal compatibility.
 
-Single Key Commands like the original insure smooth gameplay with quick input handling.
+Single Key Commands like the original ensure smooth gameplay with quick input handling.
 
 ### Installation
 
