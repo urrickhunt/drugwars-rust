@@ -13,6 +13,8 @@ Single Key Commands like the original insure smooth gameplay with quick input ha
 
 `cargo build --release`
 
+`cargo install --path .`
+
 `drugwars-rust`
 
 Git Bash mintty `winpty drugwars-rust`
