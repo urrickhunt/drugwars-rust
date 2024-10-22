@@ -1,6 +1,6 @@
 [package]
 name = "drugwars-rust"
-version = "0.6.9-c"
+version = "0.7.0"
 edition = "2021"
 authors = ["urrick hunt"]
 description = "Classic Drugwars game in Rust 🦀"
