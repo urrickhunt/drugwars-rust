@@ -15,7 +15,7 @@ Single Key Commands like the original ensure smooth gameplay with quick input ha
 
 `git clone https://github.com/urrickhunt/drugwars-rust`
 
-normal release
+**normal release**
 
 `cargo build --release`
 
