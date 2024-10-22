@@ -112,7 +112,7 @@ fn getch() -> io::Result<char> {
     }
 }
 
-static VERSION: &str = "0.6.9-c";
+static VERSION: &str = "0.6.10";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 enum Drug {
