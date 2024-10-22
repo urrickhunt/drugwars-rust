@@ -19,23 +19,23 @@ Single Key Commands like the original ensure smooth gameplay with quick input ha
 
 `cargo build --release`
 
-lto release
+- lto release
 
 `cargo build --profile release-lto`
 
-normal install
+- normal install
 
 `cargo install --path .`
 
-lto install
+- lto install
 
 `cargo install --path . --profile release-lto`
 
-run
+- run
 
 `drugwars-rust`
 
-git bash mintty
+- git bash mintty
 
 `winpty drugwars-rust`
 
