@@ -15,13 +15,23 @@ Single Key Commands like the original ensure smooth gameplay with quick input ha
 
 `git clone https://github.com/urrickhunt/drugwars-rust`
 
+normal release
 `cargo build --release`
 
+lto release
+`cargo build --profile release-lto`
+
+normal install
 `cargo install --path .`
 
+lto install
+`cargo install --path . --profile release-lto`
+
+run
 `drugwars-rust`
 
-Git Bash mintty `winpty drugwars-rust`
+git bash mintty 
+`winpty drugwars-rust`
 
 ![GM](https://github.com/user-attachments/assets/afbbe054-b0ed-4214-8644-2d962995639b)
 
