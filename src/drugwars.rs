@@ -274,10 +274,7 @@ impl GameState {
         self.term_info();
         clear_screen();
         println!("\n\n");
-        println!(
-            "{}\x1B[1;32mDRUG WARS\x1B[0m",
-            " ".repeat(self.wid - 5)
-        );
+        println!("{}\x1B[1;32mDRUG WARS\x1B[0m", " ".repeat(self.wid - 5));
         println!();
         println!(
             "{}\x1B[1;32mA GAME BASED ON\x1B[0m",
@@ -323,10 +320,7 @@ impl GameState {
         self.term_info();
         clear_screen();
         println!("\n\n");
-        println!(
-            "{}\x1B[1;32mDRUG WARS\x1B[0m",
-            " ".repeat(self.wid - 20)
-        );
+        println!("{}\x1B[1;32mDRUG WARS\x1B[0m", " ".repeat(self.wid - 20));
         println!(
             "{}This is a game of buying, selling, and",
             " ".repeat(self.wid - 20)
@@ -703,11 +697,7 @@ impl GameState {
         self.show_prices();
 
         let price = *self.prices.get(&drug).unwrap_or(&0);
-        let afford = if price > 0 {
-            self.cash / price
-        } else {
-            0
-        };
+        let afford = if price > 0 { self.cash / price } else { 0 };
 
         println!("YOU CAN AFFORD ( {afford} )");
         print!("HOW MUCH {} DO YOU WANT TO BUY? ", drug.as_str());
@@ -1100,7 +1090,9 @@ impl GameState {
 
     fn paraquat(&mut self) {
         self.hud();
-        println!("\x1B[35mTHERE IS SOME WEED THAT SMELLS LIKE PARAQUAT HERE !! IT LOOKS GOOD !!\x1B[0m ");
+        println!(
+            "\x1B[35mTHERE IS SOME WEED THAT SMELLS LIKE PARAQUAT HERE !! IT LOOKS GOOD !!\x1B[0m "
+        );
         io::stdout().flush().unwrap();
         self.yn_prompt(
             "\x1B[35mWILL YOU SMOKE IT? \x1B[0m",
@@ -1175,15 +1167,10 @@ impl GameState {
         }
 
         self.hud();
-        print!(
-            "\x1B[31mPOLICE DOGS CHASE YOU {} BLOCKS !!\x1B[0m ",
-            n
-        );
+        print!("\x1B[31mPOLICE DOGS CHASE YOU {} BLOCKS !!\x1B[0m ", n);
         io::stdout().flush().unwrap();
         self.wait_for_key_press();
-        print!(
-            "\x1B[31mYOU DROPPED SOME DRUGS !! THAT'S A DRAG MAN !!\x1B[0m "
-        );
+        print!("\x1B[31mYOU DROPPED SOME DRUGS !! THAT'S A DRAG MAN !!\x1B[0m ");
         io::stdout().flush().unwrap();
         self.wait_for_key_press();
     }
@@ -1236,7 +1223,9 @@ impl GameState {
         self.hud();
         let ludes_price = self.prices.get_mut(&Drug::Ludes).unwrap();
         *ludes_price /= 6;
-        print!("\x1B[33mRIVAL DRUG DEALERS RAIDED A PHARMACY AND ARE SELLING CHEAP LUDES !!\x1B[0m ");
+        print!(
+            "\x1B[33mRIVAL DRUG DEALERS RAIDED A PHARMACY AND ARE SELLING CHEAP LUDES !!\x1B[0m "
+        );
         io::stdout().flush().unwrap();
         self.wait_for_key_press();
     }
@@ -1324,7 +1313,7 @@ impl GameState {
         let c = getch().unwrap();
         if c == '\x03' {
             self.you_win();
-            process::exit(0); 
+            process::exit(0);
         }
         c
     }
