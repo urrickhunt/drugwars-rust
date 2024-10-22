@@ -35,7 +35,7 @@ Single Key Commands like the original ensure smooth gameplay with quick input ha
 
 `drugwars-rust`
 
-- git bash mintty
+- run on git bash mintty
 
 `winpty drugwars-rust`
 
