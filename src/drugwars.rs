@@ -43,7 +43,7 @@ fn clear_screen() {
     }
 }
 
-static VERSION: &str = "0.6.10";
+static VERSION: &str = "0.6.11";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 enum Drug {
