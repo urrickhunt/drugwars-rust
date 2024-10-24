@@ -2,6 +2,11 @@
 // 40th Anniversary Drugwars in Rust
 // urrick hunt
 
+#![allow(clippy::uninlined_format_args)]
+#![allow(clippy::trivially_copy_pass_by_ref)]
+#![allow(clippy::explicit_iter_loop)]
+#![allow(clippy::unused_self)]
+
 use rand::Rng;
 use std::collections::HashMap;
 use std::env;
@@ -44,7 +49,7 @@ fn clear_screen() {
     }
 }
 
-static VERSION: &str = "0.6.11";
+static VERSION: &str = "0.6.13";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 enum Drug {
@@ -1137,8 +1142,7 @@ impl GameState {
             3 => Drug::Acid,
             4 => Drug::Weed,
             5 => Drug::Speed,
-            6 => Drug::Ludes,
-            _ => Drug::Cocaine,
+            _ => Drug::Ludes,
         };
 
         let trench_amount = self.trench_coat.get_mut(&drug).unwrap();
@@ -1270,8 +1274,26 @@ impl GameState {
         #[cfg(windows)]
         #[allow(unused_imports)]
         {
-            use winapi::um::consoleapi::ReadConsoleA;
-            use winapi::um::winnt::CHAR;
+            use winapi::um::wincon::{PeekConsoleInputW, ENABLE_LINE_INPUT, ENABLE_ECHO_INPUT, INPUT_RECORD, KEY_EVENT, KEY_EVENT_RECORD};
+            use winapi::um::consoleapi::{ReadConsoleInputW, SetConsoleCtrlHandler};
+            use winapi::um::winbase::STD_INPUT_HANDLE;
+            use winapi::um::handleapi::INVALID_HANDLE_VALUE;
+            use winapi::um::processenv::GetStdHandle;
+            use winapi::shared::minwindef::DWORD;
+            use std::sync::atomic::{AtomicBool, Ordering};
+            use std::{io, process};
+            use std::ptr::null_mut;
+
+            static CTRL_C_HANDLED: AtomicBool = AtomicBool::new(false);
+
+            unsafe extern "system" fn ctrl_handler(_: u32) -> i32 {
+                CTRL_C_HANDLED.store(true, Ordering::SeqCst);
+                1 
+            }
+
+            unsafe {
+                SetConsoleCtrlHandler(Some(ctrl_handler), 1);
+            }
 
             unsafe {
                 let handle = GetStdHandle(STD_INPUT_HANDLE);
@@ -1289,27 +1311,36 @@ impl GameState {
                     return Err(io::Error::last_os_error());
                 }
 
-                let mut buffer = [0u8; 1];
-                let mut bytes_read = 0;
-                let result = winapi::um::fileapi::ReadFile(
-                    handle,
-                    buffer.as_mut_ptr() as *mut _,
-                    1,
-                    &mut bytes_read,
-                    std::ptr::null_mut(),
-                );
+                let mut input_record: INPUT_RECORD = std::mem::zeroed();
+                let mut events_read = 0;
 
-                SetConsoleMode(handle, mode);
+                loop {
+                    if CTRL_C_HANDLED.load(Ordering::SeqCst) {
+                        self.you_win();
+                        process::exit(0);
+                    }
 
-                if result == 0 {
-                    return Err(io::Error::last_os_error());
-                }
+                    let peek_result = PeekConsoleInputW(handle, &mut input_record, 1, &mut events_read);
+                    if peek_result == 0 || events_read == 0 {
+                        continue; 
+                    }
 
-                if buffer[0] == 3 {
-                    self.you_win();
-                    process::exit(0);
-                } else {
-                    Ok(buffer[0] as char)
+                    if ReadConsoleInputW(handle, &mut input_record, 1, &mut events_read) == 0 {
+                        return Err(io::Error::last_os_error());
+                    }
+
+                    if input_record.EventType == KEY_EVENT && input_record.Event.KeyEvent().bKeyDown != 0 {
+                        let key_event: KEY_EVENT_RECORD = *input_record.Event.KeyEvent();
+                        #[allow(clippy::cast_possible_truncation)]
+                        let char_code = *key_event.uChar.UnicodeChar() as u8 as char;
+
+                        if char_code == '\u{3}' {
+                            self.you_win();
+                            process::exit(0);
+                        }
+
+                        return Ok(char_code);
+                    }
                 }
             }
         }
