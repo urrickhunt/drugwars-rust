@@ -11,6 +11,7 @@ use std::thread;
 use std::time::Duration;
 
 #[cfg(windows)]
+#[allow(unused_imports)]
 use {
     std::os::windows::io::AsRawHandle,
     winapi::shared::minwindef::DWORD,
@@ -1267,6 +1268,7 @@ impl GameState {
         }
 
         #[cfg(windows)]
+        #[allow(unused_imports)]
         {
             use winapi::um::consoleapi::ReadConsoleA;
             use winapi::um::winnt::CHAR;
