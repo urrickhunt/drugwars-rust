@@ -1,6 +1,6 @@
 [package]
 name = "drugwars-rust"
-version = "0.6.11"
+version = "0.6.13"
 edition = "2021"
 authors = ["urrick hunt"]
 description = "Classic Drugwars game in Rust 🦀"
@@ -18,7 +18,7 @@ chrono = "0.4.*"
 terminal_size = "0.1.*"
 
 [target.'cfg(windows)'.dependencies]
-winapi = { version = "0.3.*", features = ["consoleapi", "wincon", "winbase", "processenv", "fileapi", "handleapi"] }
+winapi = { version = "0.3.*", features = ["consoleapi", "wincon", "winbase", "processenv", "fileapi", "handleapi", "winuser"] }
 
 [target.'cfg(unix)'.dependencies]
 nix = "0.25.*"
