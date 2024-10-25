@@ -41,3 +41,4 @@ Single Key Commands like the original ensure smooth gameplay with quick input ha
 
 ![GM](https://github.com/user-attachments/assets/afbbe054-b0ed-4214-8644-2d962995639b)
 
+<img width="632" alt="Screenshot 2024-10-25 at 3 43 34 PM" src="https://github.com/user-attachments/assets/9fd588b1-19e0-42f2-a402-c8df09299c6c">
