@@ -39,7 +39,7 @@ Single Key Commands like the original ensure smooth gameplay with quick input ha
 
 `winpty drugwars-rust`
 
-![GM](https://github.com/user-attachments/assets/afbbe054-b0ed-4214-8644-2d962995639b)
+<img width="660" alt="Mofo" src="https://github.com/user-attachments/assets/33696fa5-711f-43d6-aac6-d86ce73942ef">
 
 ### High Scores Added
 
