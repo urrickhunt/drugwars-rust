@@ -42,6 +42,6 @@ Single Key Commands like the original ensure smooth gameplay with quick input ha
 
 ![Mofo](https://github.com/user-attachments/assets/225ca1da-c7bc-47ff-8fab-1aca4e394134)
 
-### High Scores Added
+### Local High Scores Added
 
 ![high](https://github.com/user-attachments/assets/32dae56d-e06b-4ce1-b089-979301d24068)
