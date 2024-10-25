@@ -34,7 +34,7 @@ use {
     nix::sys::termios::{cfmakeraw, tcgetattr, tcsetattr, SetArg},
 };
 
-use chrono::{Datelike, NaiveDate};
+use chrono::{Datelike, Local, NaiveDate};
 use terminal_size::{terminal_size, Height, Width};
 
 fn clear_screen() {
@@ -49,7 +49,7 @@ fn clear_screen() {
     }
 }
 
-static VERSION: &str = "0.6.13";
+static VERSION: &str = "0.6.15";
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq, Hash)]
 enum Drug {
@@ -71,6 +71,37 @@ impl Drug {
             Drug::Speed => "SPEED",
             Drug::Ludes => "LUDES",
         }
+    }
+}
+
+use std::cmp::Ordering;
+use std::fs::File;
+use std::io::{BufReader, BufRead};
+
+#[derive(Debug, Clone)]
+struct HighScore {
+    total_money: i64,
+    dealer_rank: String,
+    date: String,
+}
+
+impl PartialEq for HighScore {
+    fn eq(&self, other: &Self) -> bool {
+        self.total_money == other.total_money
+    }
+}
+
+impl Eq for HighScore {}
+
+impl PartialOrd for HighScore {
+    fn partial_cmp(&self, other: &Self) -> Option<Ordering> {
+        Some(other.total_money.cmp(&self.total_money))
+    }
+}
+
+impl Ord for HighScore {
+    fn cmp(&self, other: &Self) -> Ordering {
+        other.total_money.cmp(&self.total_money)
     }
 }
 
@@ -771,21 +802,86 @@ impl GameState {
         println!("YOUR TOTAL MONEY: \x1B[32m{}\x1B[0m", total_money_display);
         println!("YOUR SCORE: \x1B[35m{}\x1B[0m OUT OF 100", score);
 
-        if score == 100 {
-            println!("DEALER RANK: \x1B[36mGANGSTA MOTHERFUCKER ... YOU ARE MY HERO\x1B[0m");
+        let dealer_rank = if score == 100 {
+            "GANGSTA MOTHERFUCKER"
         } else if score == 99 {
-            println!("DEALER RANK: \x1B[36mHUSTLER FUCKER ... YOU THA DOPE MAN\x1B[0m");
+            "HUSTLER FUCKER"
         } else if score == 98 {
-            println!("DEALER RANK: \x1B[36mPABLO ESCOBAR ... YOU ARE A GOD\x1B[0m");
+            "PABLO ESCOBAR"
         } else if (76..=97).contains(&score) {
-            println!("DEALER RANK: \x1B[36mKINGPIN ... GOD DAMN\x1B[0m");
+            "KINGPIN"
         } else if (51..=75).contains(&score) {
-            println!("DEALER RANK: \x1B[36mRUN THE TOWN ... PRETTY GOOD\x1B[0m");
+            "RUN THE TOWN"
         } else if (31..=50).contains(&score) {
-            println!("DEALER RANK: \x1B[36mOWN THE BLOCK ... NOT BAD\x1B[0m");
-        } else if score <= 30 {
-            println!("DEALER RANK: \x1B[36mSMALL TIME PUSHA ... WEAK\x1B[0m");
+            "OWN THE BLOCK"
+        } else {
+            "SMALL TIME PUSHA"
+        };
+
+        match score {
+            100 => println!("DEALER RANK: \x1B[36m{} ... YOU ARE MY HERO\x1B[0m", dealer_rank),
+            99 => println!("DEALER RANK: \x1B[36m{} ... YOU THA DOPE MAN\x1B[0m", dealer_rank),
+            98 => println!("DEALER RANK: \x1B[36m{} ... YOU ARE A GOD\x1B[0m", dealer_rank),
+            76..=97 => println!("DEALER RANK: \x1B[36m{} ... GOD DAMN\x1B[0m", dealer_rank),
+            51..=75 => println!("DEALER RANK: \x1B[36m{} ... PRETTY GOOD\x1B[0m", dealer_rank),
+            31..=50 => println!("DEALER RANK: \x1B[36m{} ... NOT BAD\x1B[0m", dealer_rank),
+            _ => println!("DEALER RANK: \x1B[36m{} ... WEAK\x1B[0m", dealer_rank),
         }
+
+        let now = Local::now();
+        let date = format!("{:02} / {:02} / {:02}", now.month(), now.day(), now.year() % 100);
+
+        let new_score = HighScore {
+            total_money,
+            dealer_rank: dealer_rank.to_string(),
+            date,
+        };
+
+        let mut high_scores: Vec<HighScore> = Vec::new();
+
+        if let Ok(file) = File::open("highscores.txt") {
+            let reader = BufReader::new(file);
+            for line in reader.lines().map_while(Result::ok) {
+                let parts: Vec<&str> = line.trim().split(',').collect();
+                if parts.len() == 3 {
+                    if let Ok(total_money) = parts[0].parse::<i64>() {
+                        let dealer_rank = parts[1].to_string();
+                        let date = parts[2].to_string();
+                        high_scores.push(HighScore {
+                            total_money,
+                            dealer_rank,
+                            date,
+                        });
+                    }
+                }
+            }
+        }
+
+        high_scores.push(new_score);
+
+        high_scores.sort();
+
+        if high_scores.len() > 10 {
+            high_scores.truncate(10);
+        }
+
+        if let Ok(mut file) = File::create("highscores.txt") {
+            for hs in &high_scores {
+                writeln!(file, "{},{},{}", hs.total_money, hs.dealer_rank, hs.date).unwrap();
+            }
+        }
+
+        println!("\x1B[38;2;255;202;128m\nTOP 10 HIGH SCORES\n\x1B[0m");
+        for (i, hs) in high_scores.iter().enumerate() {
+            println!(
+                "{:02}  \x1B[32m{}\x1B[0m  \x1B[36m{}\x1B[0m  \x1B[35m{}\x1B[0m",
+                i + 1,
+                Self::format_number(hs.total_money),
+                hs.dealer_rank,
+                hs.date
+            );
+        }
+
         process::exit(0);
     }
 
