@@ -55,6 +55,13 @@ This started from the same game idea, but it is no longer a straight port. The c
 - Drug keys are prompt-based: `C` cocaine, `H` heroin, `A` acid, `W` weed, `S` speed, `L` ludes.
 - Travel uses `1` through `6`.
 
+## Install
+
+```bash
+cargo install drugwars-rust
+drugwars-rust
+```
+
 ## Run
 
 ```bash
