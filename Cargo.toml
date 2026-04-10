@@ -1,16 +1,19 @@
 [package]
 name = "drugwars-rust"
-version = "0.6.15"
+version = "0.6.69"
 edition = "2021"
+rust-version = "1.82"
 authors = ["urrick hunt"]
 description = "Classic Drugwars game in Rust 🦀"
 license = "MIT"
 repository = "https://github.com/urrickhunt/drugwars-rust"
+readme = "README.md"
 keywords = ["game", "drugwars", "terminal"]
+categories = ["games", "command-line-interface"]
 
 [[bin]]
 name = "drugwars-rust"
-path = "src/drugwars.rs"
+path = "src/main.rs"
 
 [dependencies]
 rand = "0.8.*"
@@ -18,7 +21,7 @@ chrono = "0.4.*"
 terminal_size = "0.1.*"
 
 [target.'cfg(windows)'.dependencies]
-winapi = { version = "0.3.*", features = ["consoleapi", "wincon", "winbase", "processenv", "fileapi", "handleapi", "winuser"] }
+winapi = { version = "0.3.*", features = ["consoleapi", "wincon", "winbase", "processenv", "handleapi", "libloaderapi", "processthreadsapi", "ntdef", "synchapi"] }
 
 [target.'cfg(unix)'.dependencies]
 nix = "0.25.*"
@@ -26,4 +29,5 @@ nix = "0.25.*"
 [profile.release-lto]
 inherits = "release"
 lto = true
-
+opt-level = 3
+strip = true
