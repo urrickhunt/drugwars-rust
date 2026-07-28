@@ -5,7 +5,7 @@ use crate::balance::player::{
     STARTING_HAS_SHOTGUN, STARTING_HOLD, STARTING_MAX_LOAN,
 };
 
-use super::{Drug, DrugMap, ALL_DRUGS};
+use super::{ALL_DRUGS, Drug, DrugMap};
 
 #[derive(Debug, Clone, Copy)]
 pub struct Inventory {
@@ -179,11 +179,7 @@ impl PlayerState {
     }
 
     pub(crate) const fn affordable_units_at(&self, price: i64) -> i64 {
-        if price <= 0 {
-            0
-        } else {
-            self.cash / price
-        }
+        if price <= 0 { 0 } else { self.cash / price }
     }
 
     pub(crate) const fn repay_debt(&mut self, amount: i64) {

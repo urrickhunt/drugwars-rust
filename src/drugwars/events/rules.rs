@@ -7,7 +7,7 @@ use crate::balance::events::{
     SHOTGUN_PRICE_MAX, SHOTGUN_PRICE_MIN, STORY_EVENT_HOLD_THRESHOLD,
 };
 use crate::engine::RuleError;
-use crate::model::{Drug, GameState, PriceEffect, PriceEvent, ALL_DRUGS, PRICE_EVENTS};
+use crate::model::{ALL_DRUGS, Drug, GameState, PRICE_EVENTS, PriceEffect, PriceEvent};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum DailyEvent {

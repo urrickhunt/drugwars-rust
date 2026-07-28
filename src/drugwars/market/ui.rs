@@ -1,7 +1,7 @@
 use std::io::{self, Write};
 
 use super::{BankAction, LoanAction, MarketEntry, MarketMenuAction, StashAction, TradeAction};
-use crate::ansi::{paint, CYAN, DEVILED_EGGS, GREEN, MAGENTA, RED, YELLOW};
+use crate::ansi::{CYAN, DEVILED_EGGS, GREEN, MAGENTA, RED, YELLOW, paint};
 use crate::engine::{RuleError, ScoreSummary};
 use crate::input::enable_input_echo;
 use crate::model::{Borough, Drug, GameState};

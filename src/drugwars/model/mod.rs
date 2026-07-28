@@ -5,7 +5,7 @@ pub mod screen;
 pub mod world;
 
 pub use self::catalog::{
-    Drug, DrugMap, PriceEffect, PriceEvent, ALL_DRUGS, DRUG_COUNT, PRICE_EVENTS,
+    ALL_DRUGS, DRUG_COUNT, Drug, DrugMap, PRICE_EVENTS, PriceEffect, PriceEvent,
 };
 pub use self::game::GameState;
 pub use self::player::PlayerState;

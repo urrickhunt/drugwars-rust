@@ -5,8 +5,8 @@ use std::io::Read;
 
 #[cfg(unix)]
 use {
-    nix::libc::{poll, pollfd, POLLIN, STDIN_FILENO},
-    nix::sys::termios::{cfmakeraw, tcflush, tcgetattr, tcsetattr, FlushArg, LocalFlags, SetArg},
+    nix::libc::{POLLIN, STDIN_FILENO, poll, pollfd},
+    nix::sys::termios::{FlushArg, LocalFlags, SetArg, cfmakeraw, tcflush, tcgetattr, tcsetattr},
 };
 
 #[cfg(windows)]

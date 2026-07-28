@@ -1,5 +1,5 @@
 use crate::audio::MusicState;
-use crate::model::{Borough, Drug, GameState, ALL_DRUGS, DRUG_COUNT};
+use crate::model::{ALL_DRUGS, Borough, DRUG_COUNT, Drug, GameState};
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum ArsenalView {

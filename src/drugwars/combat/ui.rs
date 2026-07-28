@@ -3,7 +3,7 @@ use std::io::{self, Write};
 use super::{
     CombatAction, CombatResolution, CombatRound, DoctorTreatment, FightOutcome, FireResult,
 };
-use crate::ansi::{paint, BLUE, CYAN, GREEN, MAGENTA, RED, YELLOW};
+use crate::ansi::{BLUE, CYAN, GREEN, MAGENTA, RED, YELLOW, paint};
 use crate::model::GameState;
 use crate::ui::{clear_screen, sentence_lines};
 use crate::view::ArsenalView;
