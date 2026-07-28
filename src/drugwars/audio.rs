@@ -269,7 +269,8 @@ fn spawn_watchdog(music: &Arc<Mutex<MusicPlayer>>) {
     let music = Arc::clone(music);
     thread::spawn(move || loop {
         thread::sleep(Duration::from_millis(500));
-        if let Ok(mut player) = music.lock() {
+        let lock_result = music.lock();
+        if let Ok(mut player) = lock_result {
             player.respawn_if_needed();
         }
     });
