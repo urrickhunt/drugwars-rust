@@ -1,8 +1,8 @@
 [package]
 name = "drugwars-rust"
 version = "0.6.69"
-edition = "2021"
-rust-version = "1.82"
+edition = "2024"
+rust-version = "1.97.1"
 authors = ["urrick hunt"]
 description = "Classic Drugwars game in Rust 🦀"
 license = "MIT"
@@ -21,7 +21,17 @@ chrono = "0.4.*"
 terminal_size = "0.1.*"
 
 [target.'cfg(windows)'.dependencies]
-winapi = { version = "0.3.*", features = ["consoleapi", "wincon", "winbase", "processenv", "handleapi", "libloaderapi", "processthreadsapi", "ntdef", "synchapi"] }
+winapi = { version = "0.3.*", features = [
+  "consoleapi",
+  "wincon",
+  "winbase",
+  "processenv",
+  "handleapi",
+  "libloaderapi",
+  "processthreadsapi",
+  "ntdef",
+  "synchapi",
+] }
 
 [target.'cfg(unix)'.dependencies]
 nix = "0.25.*"
