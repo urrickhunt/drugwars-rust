@@ -1,7 +1,7 @@
 use chrono::{Datelike, NaiveDate};
 use rand::Rng;
 use std::process;
-use terminal_size::{terminal_size, Height, Width};
+use terminal_size::{Height, Width, terminal_size};
 
 use crate::audio;
 use crate::balance::DRUG_PRICE_RANGES;

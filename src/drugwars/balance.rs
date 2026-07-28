@@ -1,4 +1,4 @@
-use crate::model::{Drug, DRUG_COUNT};
+use crate::model::{DRUG_COUNT, Drug};
 
 #[derive(Debug, Clone, Copy)]
 pub struct DrugPriceRange {

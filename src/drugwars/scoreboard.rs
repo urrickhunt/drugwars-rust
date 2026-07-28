@@ -1,7 +1,7 @@
 use super::paths::app_data_dir;
 use chrono::{Datelike, Local};
 use std::cmp::Reverse;
-use std::fs::{create_dir_all, File};
+use std::fs::{File, create_dir_all};
 use std::io::{self, BufRead, BufReader, Write};
 use std::path::{Path, PathBuf};
 

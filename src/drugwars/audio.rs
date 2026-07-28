@@ -116,7 +116,7 @@ impl MusicPlayer {
 
     #[cfg(unix)]
     fn os_suspend(pid: u32) {
-        use nix::sys::signal::{kill, Signal};
+        use nix::sys::signal::{Signal, kill};
         use nix::unistd::Pid;
 
         if let Ok(pid) = i32::try_from(pid) {
@@ -126,7 +126,7 @@ impl MusicPlayer {
 
     #[cfg(unix)]
     fn os_resume(pid: u32) {
-        use nix::sys::signal::{kill, Signal};
+        use nix::sys::signal::{Signal, kill};
         use nix::unistd::Pid;
 
         if let Ok(pid) = i32::try_from(pid) {
@@ -267,10 +267,13 @@ pub fn stop_music() {
 
 fn spawn_watchdog(music: &Arc<Mutex<MusicPlayer>>) {
     let music = Arc::clone(music);
-    thread::spawn(move || loop {
-        thread::sleep(Duration::from_millis(500));
-        if let Ok(mut player) = music.lock() {
-            player.respawn_if_needed();
+    thread::spawn(move || {
+        loop {
+            thread::sleep(Duration::from_millis(500));
+            let lock_result = music.lock();
+            if let Ok(mut player) = lock_result {
+                player.respawn_if_needed();
+            }
         }
     });
 }

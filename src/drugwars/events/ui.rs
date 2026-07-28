@@ -3,7 +3,7 @@ use std::io::{self, Write};
 use super::{
     BrowniesOutcome, CoatOffer, DailyEvent, FindDrugsOutcome, GunSaleOffer, MuggingOutcome,
 };
-use crate::ansi::{paint, ASTER, BLUE, CYAN, DEVILED_EGGS, GREEN, MAGENTA, RED, YELLOW};
+use crate::ansi::{ASTER, BLUE, CYAN, DEVILED_EGGS, GREEN, MAGENTA, RED, YELLOW, paint};
 use crate::engine::RuleError;
 use crate::model::GameState;
 use crate::state::format_number;

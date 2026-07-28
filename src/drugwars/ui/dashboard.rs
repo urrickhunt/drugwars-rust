@@ -1,4 +1,4 @@
-use crate::ansi::{paint, BLUE, BRIGHT_BLACK, CYAN, GREEN, MAGENTA, RESET, YELLOW};
+use crate::ansi::{BLUE, BRIGHT_BLACK, CYAN, GREEN, MAGENTA, RESET, YELLOW, paint};
 use crate::model::{Drug, GameState};
 use crate::state::{format_number, game_date_str};
 use crate::view::{ArsenalView, PriceTrend};

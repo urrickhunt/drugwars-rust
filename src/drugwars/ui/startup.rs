@@ -2,8 +2,8 @@ use std::io::{self, Write};
 use std::thread;
 use std::time::Duration;
 
-use crate::ansi::{paint, BOLD_GREEN, MAGENTA, RESET, YELLOW};
-use crate::balance::{DrugPriceRange, DRUG_PRICE_RANGES};
+use crate::ansi::{BOLD_GREEN, MAGENTA, RESET, YELLOW, paint};
+use crate::balance::{DRUG_PRICE_RANGES, DrugPriceRange};
 use crate::input::drain_stdin;
 use crate::model::GameState;
 
